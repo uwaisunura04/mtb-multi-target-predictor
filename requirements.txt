@@ -1,0 +1,5 @@
+streamlit
+deepchem
+rdkit-pypi
+scikit-learn
+joblib
