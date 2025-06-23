@@ -1,5 +1,0 @@
-streamlit
-scikit-learn
-joblib
-git+https://github.com/deepchem/deepchem.git@release
-https://github.com/rdkit/rdkit/releases/download/Release_2022_09_4/rdkit-2022.9.4-cp39-cp39-manylinux_2014_x86_64.whl
