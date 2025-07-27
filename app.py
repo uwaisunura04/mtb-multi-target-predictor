@@ -5,7 +5,7 @@ from rdkit import Chem
 from rdkit.Chem import Descriptors
 
 # Load the model
-model = joblib.load("regression_model.pkl")
+model = joblib.load("MTB_RF_model.pkl")
 
 # Molecular descriptor calculation
 def compute_descriptors(smiles):
