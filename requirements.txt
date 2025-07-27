@@ -1,8 +1,4 @@
-streamlit==1.25.0
-deepchem==2.5.0
-rdkit-pypi==2022.3.1
-tensorflow==2.10.1
-pandas
-numpy
+streamlit
 scikit-learn
+numpy
 joblib
