@@ -1,0 +1,26 @@
+FROM python:3.9-slim
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libglib2.0-0 \
+    libxrender1 \
+    libsm6 \
+    libxext6 \
+    python3-opencv \
+    && apt-get clean
+
+# Install RDKit from pip
+RUN pip install --upgrade pip
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Copy your app
+COPY . /app
+WORKDIR /app
+
+# Streamlit settings
+ENV STREAMLIT_PORT=7860
+EXPOSE 7860
+
+CMD ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0"]
