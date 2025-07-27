@@ -1,0 +1,31 @@
+# app.py
+
+import streamlit as st
+import joblib
+import numpy as np
+import json
+
+# Load model and features
+model = joblib.load("MTB_RF_model.pkl")
+with open("features.json", "r") as f:
+    features = json.load(f)
+
+# Streamlit UI
+st.set_page_config(page_title="MTB Drug Activity Predictor 🇳🇬", layout="centered")
+st.title("🧬 MTB Drug Activity Predictor")
+st.markdown("Predict the **pIC50** of compounds targeting *Mycobacterium tuberculosis* using ML")
+
+# Input form
+user_input = []
+for feat in features:
+    val = st.number_input(f"Enter {feat}:", min_value=0.0, step=0.1, format="%.2f")
+    user_input.append(val)
+
+# Predict button
+if st.button("🧪 Predict pIC50"):
+    input_array = np.array(user_input).reshape(1, -1)
+    prediction = model.predict(input_array)[0]
+    st.success(f"🧠 Predicted pIC50: **{prediction:.2f}**")
+
+st.markdown("---")
+st.caption("🔬 Built by Uwaisu Nura 🇳🇬 | Powered by Machine Learning")
